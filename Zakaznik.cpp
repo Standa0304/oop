@@ -14,13 +14,16 @@ int Zakaznik::getId()
 
 void Zakaznik::rezervovat(Termin* termin)
 {
-    Rezervace novaRezervace(idRez, termin);
+    if (rezervace != nullptr) {
+        delete rezervace;
+    }
+    rezervace = new Rezervace(idRez, termin);
 }
 
 string Zakaznik::vypisInformace()
 {
     string popis;
-    popis = "first name: " + firstName + "last name: " + lastName + "id: " + std::to_string(id);
+    popis = "first name: " + firstName + " last name: " + lastName + " id: " + std::to_string(id);
     return popis;
 }
 

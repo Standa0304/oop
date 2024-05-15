@@ -2,8 +2,11 @@
 
 Restaurace::Restaurace(int pocetStolu, string nazev)
 {
-	this->pocetStolu = pocetStolu;
-	seznamStolu = new Stul * [pocetStolu];
+    this->pocetStolu = pocetStolu;
+    seznamStolu = new Stul * [pocetStolu];
+    for (int i = 0; i < pocetStolu; i++) {
+        seznamStolu[i] = nullptr;
+    }
     this->nazev = nazev;
 }
 
@@ -14,7 +17,7 @@ string Restaurace::getNazev()
 
 void Restaurace::pridatStul(Stul* stul)
 {
-    for (int i = 0; i < pocetStolu; ++i){
+    for (int i = 0; i < pocetStolu; i++){
         if (seznamStolu[i] == nullptr){
             seznamStolu[i] = stul;
         }
@@ -38,11 +41,12 @@ void Restaurace::setJidlo(Jidlo* jidlo)
 
 Stul* Restaurace::getStul(int id)
 {
-    for (int i = 0; i < pocetStolu; ++i) {
-        if (seznamStolu[i]->getId() == id) {
-            return seznamStolu[i];
-        }
-    }  return nullptr;
+    if (id >= 1 && id <= pocetStolu) {
+        return seznamStolu[id - 1];
+    }
+    else {
+        return nullptr;
+    }
 }
 
 Jidlo* Restaurace::getJidlo()

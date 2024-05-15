@@ -17,6 +17,7 @@ public:
 	Restaurace(int pocetStolu, string nazev);
 
 	string getNazev();
+
 	void pridatStul(Stul* stul);
 	void odebratStul(int id);
 
